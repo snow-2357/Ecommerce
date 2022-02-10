@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import {mobile} from "../responsive";
-
+import { useSelector, useDispatch } from 'react-redux'
+import { loginStart, loginSuccess , loginFailure} from '../redux/userSlice'
 const Login = () => {
+  //const logingdata=useSelector((state)=>state.user.currentUser)
+  const dispatch = useDispatch()
   return (
     <Container>
       <Wrapper>
@@ -9,7 +12,7 @@ const Login = () => {
         <Form>
           <Input placeholder="username" />
           <Input placeholder="password" />
-          <Button>LOGIN</Button>
+          <Button onClick={()=>dispatch(loginSuccess())}>LOGIN</Button>
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>

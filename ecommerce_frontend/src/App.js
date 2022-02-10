@@ -11,11 +11,15 @@ import Home from "./Pages/Home";
 import ProductsPage from "./Pages/ProductsPage";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-
+import { useSelector, useDispatch } from 'react-redux'
+//import { loginStart, loginSuccess , loginFailure} from './redux/userSlice'
 function App() {
-  const user = true;
+  
+  const user=useSelector((state)=>state.user.currentUser)
+  // const dispatch = useDispatch()
   return (
     <Router>
+      {console.log(user)}
       <Switch>
         <Route exact path="/">
           <Home />

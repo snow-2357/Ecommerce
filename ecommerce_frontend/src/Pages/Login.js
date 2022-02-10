@@ -1,12 +1,27 @@
 import styled from "styled-components";
+import axios from 'axios';
 import {mobile} from "../responsive";
 import { useSelector, useDispatch } from 'react-redux'
 import { loginStart, loginSuccess , loginFailure} from '../redux/userSlice'
 const Login = () => {
   //const logingdata=useSelector((state)=>state.user.currentUser)
   const dispatch = useDispatch()
+  
+const fetchTest= ()=>{
+  console.log("hi");
+  axios.get("https://jsonplaceholder.typicode.com/users/1")
+  .then(response => response.data)
+  .then(json => console.log(json))
+  .catch(err=>{
+    console.log(err);
+  })
+}
+
+
   return (
+
     <Container>
+      {fetchTest()}
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
@@ -22,6 +37,12 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
+//styles
+
 const Container= styled.div`
 background-color: rgba(0,0,0,.9);
   width: 100vw;

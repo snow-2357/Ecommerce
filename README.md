@@ -47,6 +47,6 @@ $ npm start (for both frontend and backend)
 
 - [React](https://reactjs.org/)
 
-- []
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 
 ```

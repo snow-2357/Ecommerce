@@ -15,21 +15,25 @@ const Category = ({item}) => {
 }
 
 export default Category
-const Container = styled.div`
-  flex: 1;
-  margin: 3px;
-  height: 20vh;
-  position: relative;
-  ${mobile({ height: "10vh" })}
-`;
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   ${mobile({ height: "10vh" })}
+  border-radius: 5px;
 `;
-
+const Container = styled.div`
+  flex: 1;
+  margin: 3px;
+  height: 20vh;
+  position: relative;
+  ${mobile({ height: "10vh" })}
+  &:hover ${Image}{
+    transform: translate(0px, -2px);
+    transition:ease-in-out;
+    }
+`;
 const Info = styled.div`
   position: absolute;
   top: 0;
@@ -50,6 +54,7 @@ const Title = styled.h1`
 `;
 
 const Button = styled.button`
+  border-radius: 3px;
     border:none;
     padding: 7px 10px;
     background-color: white;
@@ -61,5 +66,5 @@ const Button = styled.button`
       box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
       transition: all .02s ease-in;
     }
-    ${mobile({ fontSize: "10px" ,padding: "5px 8px"})}
+    ${mobile({ fontSize: "10px" ,padding: "5px 8px"})} 
 `;

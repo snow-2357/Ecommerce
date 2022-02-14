@@ -1,20 +1,47 @@
+import { useState } from "react";
 import styled from "styled-components";
 import {mobile} from "../responsive";
-
+import axios from 'axios';
 const Signup = () => {
+  const [userName,SetUserName]   =useState("");
+  const [email,SetEmail]         =useState("");
+  const [password1,SetPassword1] =useState("");
+  const [password2,SetPassword2] =useState("");
+  
+  const handleSubmit=(event)=>{
+    event.preventDefault();
+    
+    const data = {
+      username : userName,
+      email    : email,
+      password : password1,
+    } 
+    console.log(data);
+
+    axios.post('https://reqres.in/api/articles', data)
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+      
+  }
+
+  
   return (
     <Container>
       <Wrapper>
         <Title>SIGN UP</Title>
-        <Form>
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm email" />
+        <Form  onSubmit={handleSubmit} >
+          <Input placeholder="username" onChange={event => SetUserName(event.target.value)} />
+          <Input placeholder="email" onChange={event => SetEmail(event.target.value)} />
+          <Input placeholder="password" onChange={event => SetPassword1(event.target.value)} />
+          <Input placeholder="confirm email" onChange={event => SetPassword2(event.target.value)} />
           <Button>SIGN UP</Button>
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
         </Form>
+        {/* <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
+        <Link>CREATE A NEW ACCOUNT</Link> */}
       </Wrapper>
     </Container>
   );

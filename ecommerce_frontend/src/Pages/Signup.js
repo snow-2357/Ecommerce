@@ -2,7 +2,12 @@ import { useState } from "react";
 import styled from "styled-components";
 import {mobile} from "../responsive";
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux'
+import { loginStart, loginSuccess , loginFailure} from '../redux/userSlice'
+
 const Signup = () => {
+  const logingdata=useSelector((state)=>state.user.currentUser)
+  const dispatch = useDispatch()
   const [userName,SetUserName]   =useState("");
   const [email,SetEmail]         =useState("");
   const [password1,SetPassword1] =useState("");
@@ -20,8 +25,8 @@ const Signup = () => {
    
     axios.post(process.env.REACT_APP_BASE_LINK, data)
     .then(response => {
-      console.log(response.data);
-      alert(`logedin as ${response.data.username}`)
+      console.log(response.data); 
+      dispatch(loginSuccess(response.data.username));
     })
     .catch(err=>{
       console.log(err);

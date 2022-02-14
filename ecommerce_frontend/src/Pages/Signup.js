@@ -17,10 +17,11 @@ const Signup = () => {
       password : password1,
     } 
     console.log(data);
-
-    axios.post('https://reqres.in/api/articles', data)
+   
+    axios.post(process.env.REACT_APP_BASE_LINK, data)
     .then(response => {
-      console.log(response.data)
+      console.log(response.data);
+      alert(`logedin as ${response.data.username}`)
     })
     .catch(err=>{
       console.log(err);

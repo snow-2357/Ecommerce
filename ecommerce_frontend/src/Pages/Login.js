@@ -7,11 +7,11 @@ import { loginStart, loginSuccess, loginFailure } from "../redux/userSlice";
 const Login = () => {
   //const logingdata=useSelector((state)=>state.user.currentUser)
   const dispatch = useDispatch();
-  const [userName,SetUserName]   =useState("");
-  const [email,SetEmail]         =useState("");
+  const [userName, SetUserName] = useState("");
+  const [email, SetEmail] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     const data = {
       username: userName,
       password: email,
@@ -34,8 +34,14 @@ const Login = () => {
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form onSubmit={handleSubmit}>
-          <Input placeholder="username" onChange={event => SetUserName(event.target.value)} />
-          <Input placeholder="email" onChange={event => SetEmail(event.target.value)} />
+          <Input
+            placeholder="username"
+            onChange={(event) => SetUserName(event.target.value)}
+          />
+          <Input
+            placeholder="email"
+            onChange={(event) => SetEmail(event.target.value)}
+          />
           <Button>LOGIN</Button>
           {/* <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link> */}

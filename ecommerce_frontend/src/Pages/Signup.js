@@ -23,7 +23,7 @@ const Signup = () => {
     } 
     console.log(data);
    
-    axios.post(`${process.env.REACT_APP_BASE_LINK}/register`, data)
+    axios.post(`${process.env.REACT_APP_BASE_LINK}/auth/register`, data)
     .then(response => {
       console.log(response.data); 
       dispatch(loginSuccess(response.data.username));

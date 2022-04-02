@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { popularProducts } from "../data";
+// import { popularProducts } from "../data";
 import Product from "./Product";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -18,8 +18,8 @@ const Products = () => {
       });
   }, []);
 
-  console.log(datas);
-  console.log("hey sima");
+  // console.log(datas);
+  // console.log("hey sima");
   return (
   <>
     {datas && <Container>

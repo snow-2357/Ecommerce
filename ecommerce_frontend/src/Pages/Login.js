@@ -16,7 +16,7 @@ const Login = () => {
       username: userName,
       password: email,
     };
-    console.log(data);
+    console.log(data.username);
     axios
       .post("http://localhost:5000/api/auth/login", data)
       .then((response) => {

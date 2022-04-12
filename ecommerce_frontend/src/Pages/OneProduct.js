@@ -1,10 +1,10 @@
-import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import axios from "axios";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ShoppingCart } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 const OneProduct = () => {
 
   const location = useLocation();
@@ -27,14 +27,20 @@ const OneProduct = () => {
   if(product===null)
     return(
       <div>
-        loding
+        Loading ..........
         {console.log("null")}
       </div>
     )
   else
   return (
     <Container>
+     
       <Wrapper>
+      <Link to ="/" style={{ textDecoration: "none" }}>
+      <BackButton>
+        Back
+      </BackButton>
+      </Link>
         <ImgContainer>
           {product && <Image src={product.img} />}
         </ImgContainer>
@@ -158,7 +164,7 @@ const Button = styled.button`
 color:white;
   display:flex;
   padding: 15px 30px;
-  background-color: rgb(255, 159, 0);
+  background-color: rgb(40, 116, 240, .9);
   cursor: pointer;
   border :none;
   font-weight: 500;
@@ -170,3 +176,9 @@ color:white;
     padding:2px;
   }
 `;
+
+const BackButton =styled(Button)`
+background-color: rgb(40, 116, 240, .9);
+height:30px;
+padding : 5px 15px;
+`

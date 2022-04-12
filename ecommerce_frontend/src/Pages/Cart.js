@@ -1,7 +1,4 @@
-import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
-import Footer from "../Comps/Footer";
-import Navbar from "../Comps/Navbar";
 import { mobile } from "../responsive";
 
 const Container = styled.div``;
@@ -33,14 +30,7 @@ const TopButton = styled.button`
   color: ${(props) => props.type === "filled" && "white"};
 `;
 
-const TopTexts = styled.div`
-  ${mobile({ display: "none" })}
-`;
-const TopText = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0px 10px;
-`;
+
 
 const Bottom = styled.div`
   display: flex;
@@ -74,9 +64,7 @@ const Details = styled.div`
   justify-content: space-around;
 `;
 
-const ProductName = styled.span``;
 
-const ProductId = styled.span``;
 
 const ProductColor = styled.div`
   width: 20px;
@@ -101,11 +89,6 @@ const ProductAmountContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-const ProductAmount = styled.div`
-  font-size: 24px;
-  margin: 5px;
-  ${mobile({ margin: "5px 15px" })}
-`;
 
 const ProductPrice = styled.div`
   font-size: 30px;
@@ -166,9 +149,8 @@ const Cart = () => {
               <ProductDetail>
                 <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
                 <Details>
-                  <ProductName>
+                  
                     <b>Product:</b> JESSIE THUNDER SHOES
-                  </ProductName>
                  
                   <ProductColor color="black" />
                   <ProductSize>
@@ -188,9 +170,9 @@ const Cart = () => {
               <ProductDetail>
                 <Image src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" />
                 <Details>
-                  <ProductName>
+                
                     <b>Product:</b> HAKURA T-SHIRT
-                  </ProductName>
+           
                   
                   <ProductColor color="gray" />
                   <ProductSize>

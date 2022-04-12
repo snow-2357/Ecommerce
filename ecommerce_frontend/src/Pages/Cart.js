@@ -240,7 +240,7 @@ const Cart = () => {
           </Summary>
         </Bottom>
       </Wrapper>
-      <Footer />
+
     </Container>
   );
 };

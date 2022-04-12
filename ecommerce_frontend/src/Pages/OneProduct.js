@@ -1,24 +1,51 @@
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
+import axios from "axios";
 import { mobile } from "../responsive";
 import Footer from "../Comps/Footer";
 import Navbar from "../Comps/Navbar";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 const OneProduct = () => {
+
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  console.log(id);
+  
+  const [product, setProduct] = useState(null);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BASE_LINK}/product/find/${id}`)
+      .then((response) => {
+        setProduct(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
+  
+  
+  if(product===null)
+    return(
+      <div>
+        loding
+        {console.log("null")}
+      </div>
+    )
+  else
   return (
     <Container>
-        <Navbar />
       <Wrapper>
         <ImgContainer>
-          <Image src="./product/iphone.jpg" />
+          {product && <Image src={product.img} />}
         </ImgContainer>
         <InfoContainer>
-          <Title>APPLE iPhone</Title>
+          <Title>{product.title}</Title>
           <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
+            {product.desc}
           </Desc>
-          <Price>$200</Price>
+          <Price>${product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -45,7 +72,6 @@ const OneProduct = () => {
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-      <Footer />
     </Container>
   );
 };

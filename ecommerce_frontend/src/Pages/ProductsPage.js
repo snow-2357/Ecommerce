@@ -1,12 +1,13 @@
-import React from 'react';
-import Footer from '../Comps/Footer';
-import Products from '../Comps/Products'
+import React from "react";
+import Footer from "../Comps/Footer";
+import Products from "../Comps/Products";
 import styled from "styled-components";
 function ProductsPage() {
-  return <Container>
+  return (
+    <Container>
       <Products />
-      <Footer />
-  </Container>;
+    </Container>
+  );
 }
 
 export default ProductsPage;

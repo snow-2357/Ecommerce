@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Product from "./Product";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 const Products = () => {
   const [datas, setDatas] = useState(null);
 
@@ -21,14 +21,17 @@ const Products = () => {
   // console.log(datas);
   // console.log("hey sima");
   return (
-  <>
-    {datas && <Container>
-        {datas.map((item) => (
-          <Product item={item} key={item._id} />
-        ))}
-      </Container>}
-  </>
-   
+    <>
+      {datas && (
+        <Container>
+          {datas.map((item) => (
+            <Link to={`/deal/${item._id}`} key={item._id}>
+              <Product item={item} key={item._id} />
+            </Link>
+          ))}
+        </Container>
+      )}
+    </>
   );
 };
 

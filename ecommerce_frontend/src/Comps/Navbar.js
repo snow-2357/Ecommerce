@@ -7,25 +7,15 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const Navbar = ({ user }) => {
   return (
       <Container>
-      {/* <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/cart">cart</Link>
-          </li>
-        </ul> */}
         {console.log(`${user} is loged in`)}
         <Wraper>
           {/* logo */}
-          
             <Logo>
               <Link to="/">
               <img src="./logo2.png" alt="logo" />
               </Link>
             </Logo>
           
-
           {/* search */}
           <SearchDiv>
             <SearchWraper>
@@ -47,7 +37,7 @@ const Navbar = ({ user }) => {
                 style={{ color: "white", fontSize: 16 }}
               />
             </MoreWraper>
-            <Link to="/cart">
+            <Link to="/cart" style={{ textDecoration: "none" }}>
               <CartWraper>
                 <p>Cart</p>
                 <Badge className="cart" badgeContent={4} color="primary">

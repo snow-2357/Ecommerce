@@ -12,7 +12,7 @@ const Navbar = ({ user }) => {
           {/* logo */}
             <Logo>
               <Link to="/">
-              <img src="./logo2.png" alt="logo" />
+              <img src="/logo2.png" alt="logo" />
               </Link>
             </Logo>
           

@@ -2,11 +2,9 @@ import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import axios from "axios";
 import { mobile } from "../responsive";
-import Footer from "../Comps/Footer";
-import Navbar from "../Comps/Navbar";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import { ShoppingCart } from "@material-ui/icons";
 const OneProduct = () => {
 
   const location = useLocation();
@@ -63,12 +61,11 @@ const OneProduct = () => {
             </Filter>
           </FilterContainer>
           <AddContainer>
-            <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
-            </AmountContainer>
-            <Button>ADD TO CART</Button>
+           
+            <Button>
+            <ShoppingCart style={{ color: "white" }} />
+             <p> ADD TO CART</p>
+             </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
@@ -87,6 +84,7 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
   flex: 1;
+  max-width:380px;
 `;
 
 const Image = styled.img`
@@ -156,30 +154,19 @@ const AddContainer = styled.div`
   ${mobile({ width: "100%" })}
 `;
 
-const AmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-`;
-
-const Amount = styled.span`
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: 1px solid teal;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 5px;
-`;
-
 const Button = styled.button`
-  padding: 15px 10px;
-  border: 2px solid teal;
-  background-color: white;
+color:white;
+  display:flex;
+  padding: 15px 30px;
+  background-color: rgb(255, 159, 0);
   cursor: pointer;
+  border :none;
   font-weight: 500;
+  border-radius: 5px;
   &:hover{
-      background-color: #f8f4f4;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  p{
+    padding:2px;
   }
 `;

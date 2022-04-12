@@ -39,7 +39,7 @@ function App() {
             {user ? <Redirect to="/" /> : <Signup />}
           </Route>
         </Switch>
-        <div style={{ position: "absolute" }}>
+        <div style={{ position: "relative", top:"calc(100vh - 820px)" }}>
           <Footer />
         </div>
       </Container>

@@ -3,9 +3,11 @@ import {
   Switch,
   Route,
   Redirect,
+  Link
 } from "react-router-dom";
 // import styled from "styled-components";
 // import OneProduct from "./Pages/OneProduct";
+import Navbar from './Comps/Navbar';
 import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
 import ProductsPage from "./Pages/ProductsPage";
@@ -19,13 +21,13 @@ function App() {
   // const dispatch = useDispatch()
   return (
     <Router>
-      {console.log(user)}
+      <Navbar user={user}/>
       <Switch>
         <Route exact path="/">
-          <Home />
+        {user ? <Home user={user}/> : <Login />}
         </Route>
         <Route path="/cart">
-          <Cart />
+        {user ? <Cart user={user}/> : <Login />}
         </Route>
         <Route path="/allproducts">
           <ProductsPage />

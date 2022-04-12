@@ -3,54 +3,70 @@ import styled from "styled-components";
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCart, KeyboardArrowUp } from "@material-ui/icons";
 import { mobile, fullscreen } from "../responsive";
-
-const Navbar = () => {
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+const Navbar = ({ user }) => {
   return (
-    <Container>
-      <Wraper>
-        {/* logo */}
-        <Logo>
-          <img src="./logo.png" alt="logo" />
-        </Logo>
-        {/* search */}
-        <SearchDiv>
-          <SearchWraper>
+      <Container>
+      {/* <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/cart">cart</Link>
+          </li>
+        </ul> */}
+        {console.log(`${user} is loged in`)}
+        <Wraper>
+          {/* logo */}
+          
+            <Logo>
+              <Link to="/">
+              <img src="./logo2.png" alt="logo" />
+              </Link>
+            </Logo>
+          
+
+          {/* search */}
+          <SearchDiv>
+            <SearchWraper>
+              <Input
+                className="input"
+                placeholder="Search for products, brands and more"
+              />
+              <Search style={{ color: "rgb(40, 116, 240)", fontSize: 25 }} />
+            </SearchWraper>
+          </SearchDiv>
+          {/* user cart */}
+          <User>
+            <LoginWraper>{user ? user : "Log In"}</LoginWraper>
+            <MoreWraper>
+              {" "}
+              More{" "}
+              <KeyboardArrowUp
+                className="up"
+                style={{ color: "white", fontSize: 16 }}
+              />
+            </MoreWraper>
+            <Link to="/cart">
+              <CartWraper>
+                <p>Cart</p>
+                <Badge className="cart" badgeContent={4} color="primary">
+                  <ShoppingCart style={{ color: "white" }} />
+                </Badge>
+              </CartWraper>
+            </Link>
+          </User>
+        </Wraper>
+        <SearchDiv2>
+          <SearchWraper2>
             <Input
               className="input"
               placeholder="Search for products, brands and more"
             />
             <Search style={{ color: "rgb(40, 116, 240)", fontSize: 25 }} />
-          </SearchWraper>
-        </SearchDiv>
-        {/* user cart */}
-        <User>
-          <LoginWraper>Login</LoginWraper>
-          <MoreWraper>
-            {" "}
-            More{" "}
-            <KeyboardArrowUp
-              className="up"
-              style={{ color: "white", fontSize: 16 }}
-            />
-          </MoreWraper>
-          <CartWraper>
-            <p>Cart</p>
-            <Badge className="cart" badgeContent={4} color="primary">
-              <ShoppingCart style={{ color: "white" }} />
-            </Badge>
-          </CartWraper>
-        </User>
-      </Wraper>
-      <SearchDiv2>
-        <SearchWraper2>
-          <Input
-            className="input"
-            placeholder="Search for products, brands and more"
-          />
-          <Search style={{ color: "rgb(40, 116, 240)", fontSize: 25 }} />
-        </SearchWraper2>
-      </SearchDiv2>
-    </Container>
+          </SearchWraper2>
+        </SearchDiv2>
+      </Container>
   );
 };
 
@@ -148,10 +164,9 @@ const LoginWraper = styled.div`
   font-weight: bold;
   background-color: rgb(40, 116, 240);
   transition: all 0.05s ease-in;
-  &:hover{
-      background-color: rgb(40, 130, 260);
-      
-      transition: all 0.05s ease-in;
+  &:hover {
+    background-color: rgb(40, 130, 260);
+    transition: all 0.05s ease-in;
   }
   ${mobile({
     border: "1px solid white",
@@ -193,6 +208,10 @@ const CartWraper = styled.div`
     ${mobile({ transform: "scale(0.8)" })}
   }
   p {
+    text-decoration: none;
     ${mobile({ display: "none" })}
+  }
+  p:active {
+    text-decoration: none;
   }
 `;

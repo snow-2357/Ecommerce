@@ -154,7 +154,6 @@ const Button = styled.button`
 const Cart = () => {
   return (
     <Container>
-      <Navbar />
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>

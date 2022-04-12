@@ -8,15 +8,15 @@ const Login = () => {
   //const logingdata=useSelector((state)=>state.user.currentUser)
   const dispatch = useDispatch();
   const [userName, SetUserName] = useState("");
-  const [email, SetEmail] = useState("");
+  const [password, SetPassword] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = {
       username: userName,
-      password: email,
+      password: password,
     };
-    console.log(data.username);
+    console.log(data.username,data.password);
     axios
       .post("http://localhost:5000/api/auth/login", data)
       .then((response) => {
@@ -39,8 +39,8 @@ const Login = () => {
             onChange={(event) => SetUserName(event.target.value)}
           />
           <Input
-            placeholder="email"
-            onChange={(event) => SetEmail(event.target.value)}
+            placeholder="password"
+            onChange={(event) => SetPassword(event.target.value)}
           />
           <Button>LOGIN</Button>
           {/* <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>

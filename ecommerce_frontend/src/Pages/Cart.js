@@ -155,14 +155,10 @@ const Cart = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>YOUR BAG</Title>
+        <Title>MY BAG</Title>
         <Top>
           <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
-          </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+
         </Top>
         <Bottom>
           <Info>
@@ -173,9 +169,7 @@ const Cart = () => {
                   <ProductName>
                     <b>Product:</b> JESSIE THUNDER SHOES
                   </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
+                 
                   <ProductColor color="black" />
                   <ProductSize>
                     <b>Size:</b> 37.5
@@ -184,9 +178,7 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
+                  
                 </ProductAmountContainer>
                 <ProductPrice>$ 30</ProductPrice>
               </PriceDetail>
@@ -199,9 +191,7 @@ const Cart = () => {
                   <ProductName>
                     <b>Product:</b> HAKURA T-SHIRT
                   </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
+                  
                   <ProductColor color="gray" />
                   <ProductSize>
                     <b>Size:</b> M
@@ -210,9 +200,7 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>1</ProductAmount>
-                  <Remove />
+                  
                 </ProductAmountContainer>
                 <ProductPrice>$ 20</ProductPrice>
               </PriceDetail>

@@ -17,7 +17,7 @@ router.post("/add/:id", async (req, res) => {
   try {
     const cart = await Cart.findOneAndUpdate(
       { userId: req.params.id },
-      { $push: req.body },
+      { $push:  {"products": req.body }},
       { new: true }
     );
     res.status(200).json(cart);
@@ -38,7 +38,7 @@ router.get("/find/:userId", async (req, res) => {
 
 //Delete items from cart
 
-router.post("/d/:id", async (req, res) => {
+router.post("/delete/:id", async (req, res) => {
   try {
     await Cart.updateOne({ userId: req.params.id },
       { $pull: {"products": req.body }},

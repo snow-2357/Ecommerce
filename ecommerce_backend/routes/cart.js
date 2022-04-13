@@ -2,7 +2,6 @@ const router = require("express").Router();
 const Cart = require("../models/Cart");
 
 //create cart for a user
-
 router.post("/:id", async (req, res) => {
   const newCart = new Cart({ userId: req.params.id, products: [] });
   try {
@@ -14,15 +13,14 @@ router.post("/:id", async (req, res) => {
 });
 
 // add new item in cart
-
 router.post("/add/:id", async (req, res) => {
   try {
-    const updatedCart = await Cart.findOneAndUpdate(
+    const cart = await Cart.findOneAndUpdate(
       { userId: req.params.id },
       { $push: req.body },
       { new: true }
     );
-    res.status(200).json(updatedCart);
+    res.status(200).json(cart);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -32,10 +30,24 @@ router.post("/add/:id", async (req, res) => {
 router.get("/find/:userId", async (req, res) => {
   try {
     const cart = await Cart.findOne({ userId: req.params.userId });
-    res.status(200).json(cart);
+    res.status(200).json(cart.products);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+//Delete items from cart
+
+router.post("/d/:id", async (req, res) => {
+  try {
+    await Cart.updateOne({ userId: req.params.id },
+      { $pull: {"products": req.body }},
+      { new: true });
+    res.status(200).json("item deleted");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;

@@ -25,7 +25,8 @@ function App() {
         <Navbar user={user} />
         <Switch>
           <Route exact path="/">
-            {user ? <Home user={user} /> : <Login />}
+          <Home user={user} />
+            {/* {user ? <Home user={user} /> : <Login />} */}
           </Route>
           <Route path="/cart">{user ? <Cart user={user} /> : <Login />}</Route>
           <Route path="/allproducts">

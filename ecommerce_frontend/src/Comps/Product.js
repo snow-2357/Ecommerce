@@ -17,11 +17,12 @@ const Image = styled.img`
 
 const Container = styled.div`
   cursor: pointer;
-  flex: 1;
-  margin: 5px;
+  padding:25px;
+  margin: 25px;
   min-width: 280px;
   height: 300px;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
   background-color: #f5fbfd;

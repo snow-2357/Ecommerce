@@ -5,12 +5,13 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ShoppingCart } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 const OneProduct = () => {
-
+  const userId = useSelector((state) => state.user.UserId);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   console.log(id);
-  
+
   const [product, setProduct] = useState(null);
   useEffect(() => {
     axios
@@ -22,61 +23,66 @@ const OneProduct = () => {
         console.log(err);
       });
   }, [id]);
-  
-  
-  if(product===null)
-    return(
-      <div>
-        Loading ..........
-        {console.log("null")}
-      </div>
-    )
+
+  //add item to cart
+  const handleAddToCart = () => {
+    console.log("hisiama");
+    console.log(id); //item id
+    console.log(userId); //userid
+    const item = {
+      productId: id,
+      quantity: 1,
+    };
+
+    axios
+      .post(`http://localhost:5000/api/cart/add/${userId}`, item)
+      .then((response) => {
+        console.log(response.data);
+      })
+      // .then(json => console.log(json))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  if (product === null) return <div>Loading ..........</div>;
   else
-  return (
-    <Container>
-     
-      <Wrapper>
-      <Link to ="/" style={{ textDecoration: "none" }}>
-      <BackButton>
-        Back
-      </BackButton>
-      </Link>
-        <ImgContainer>
-          {product && <Image src={product.img} />}
-        </ImgContainer>
-        <InfoContainer>
-          <Title>{product.title}</Title>
-          <Desc>
-            {product.desc}
-          </Desc>
-          <Price>${product.price}</Price>
-          <FilterContainer>
-            <Filter>
-              <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="silver" />
-             
-            </Filter>
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>245GB</FilterSizeOption>
-                <FilterSizeOption>526GB</FilterSizeOption>
-                <FilterSizeOption>1TB</FilterSizeOption>
-              </FilterSize>
-            </Filter>
-          </FilterContainer>
-          <AddContainer>
-           
-            <Button>
-            <ShoppingCart style={{ color: "white" }} />
-             <p> ADD TO CART</p>
-             </Button>
-          </AddContainer>
-        </InfoContainer>
-      </Wrapper>
-    </Container>
-  );
+    return (
+      <Container>
+        <Wrapper>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <BackButton>Back</BackButton>
+          </Link>
+          <ImgContainer>{product && <Image src={product.img} />}</ImgContainer>
+          <InfoContainer>
+            <Title>{product.title}</Title>
+            <Desc>{product.desc}</Desc>
+            <Price>${product.price}</Price>
+            <FilterContainer>
+              <Filter>
+                <FilterTitle>Color</FilterTitle>
+                <FilterColor color="black" />
+                <FilterColor color="silver" />
+              </Filter>
+              <Filter>
+                <FilterTitle>Size</FilterTitle>
+                <FilterSize>
+                  <FilterSizeOption>245GB</FilterSizeOption>
+                  <FilterSizeOption>526GB</FilterSizeOption>
+                  <FilterSizeOption>1TB</FilterSizeOption>
+                </FilterSize>
+              </Filter>
+            </FilterContainer>
+            <AddContainer>
+              <Button onClick={handleAddToCart}>
+                <ShoppingCart style={{ color: "white" }} />
+                <p> ADD TO CART</p>
+              </Button>
+            </AddContainer>
+          </InfoContainer>
+        </Wrapper>
+      </Container>
+    );
 };
 
 export default OneProduct;
@@ -85,12 +91,12 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({ padding: "10px", flexDirection:"column" })}
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 
 const ImgContainer = styled.div`
   flex: 1;
-  max-width:380px;
+  max-width: 380px;
 `;
 
 const Image = styled.img`
@@ -161,24 +167,24 @@ const AddContainer = styled.div`
 `;
 
 const Button = styled.button`
-color:white;
-  display:flex;
+  color: white;
+  display: flex;
   padding: 15px 30px;
-  background-color: rgb(40, 116, 240, .9);
+  background-color: rgb(40, 116, 240, 0.9);
   cursor: pointer;
-  border :none;
+  border: none;
   font-weight: 500;
   border-radius: 5px;
-  &:hover{
+  &:hover {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
-  p{
-    padding:2px;
+  p {
+    padding: 2px;
   }
 `;
 
-const BackButton =styled(Button)`
-background-color: rgb(40, 116, 240, .9);
-height:30px;
-padding : 5px 15px;
-`
+const BackButton = styled(Button)`
+  background-color: rgb(40, 116, 240, 0.9);
+  height: 30px;
+  padding: 5px 15px;
+`;

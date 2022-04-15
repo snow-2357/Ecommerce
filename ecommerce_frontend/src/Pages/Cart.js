@@ -81,17 +81,6 @@ const Top = styled.div`
   justify-content: space-between;
   padding: 20px;
 `;
-
-// const TopButton = styled.button`
-//   padding: 10px;
-//   font-weight: 600;
-//   cursor: pointer;
-//   border: ${(props) => props.type === "filled" && "none"};
-//   background-color: ${(props) =>
-//     props.type === "filled" ? "black" : "transparent"};
-//   color: ${(props) => props.type === "filled" && "white"};
-// `;
-
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
@@ -125,14 +114,6 @@ const SummaryItem = styled.div`
 const SummaryItemText = styled.span``;
 
 const SummaryItemPrice = styled.span``;
-
-// const Button = styled.button`
-//   width: 100%;
-//   padding: 10px;
-//   background-color: black;
-//   color: white;
-//   font-weight: 600;
-// `;
 
 const Button = styled.button`
   color: white;

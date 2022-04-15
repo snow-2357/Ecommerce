@@ -52,14 +52,19 @@ const ProductDetail = styled.div`
 `;
 
 const Image = styled.img`
-  width: 200px;
+  height:250px;
 `;
 
 const Details = styled.div`
-  padding: 20px;
+position: absolute;
+left:280px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  b{
+      padding-bottom:20px;
+  }
 `;
 
 const ProductColor = styled.div`

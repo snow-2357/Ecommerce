@@ -28,7 +28,8 @@ function App() {
           <Home user={user} />
             {/* {user ? <Home user={user} /> : <Login />} */}
           </Route>
-          <Route path="/cart">{user ? <Cart user={user} /> : <Login />}</Route>
+          {/* <Route path="/cart">{user ? <Cart user={user} /> : <Login />}</Route> */}
+          <Route path="/cart"> <Cart /> </Route>
           <Route path="/allproducts">
             <ProductsPage />
           </Route>

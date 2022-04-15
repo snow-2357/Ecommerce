@@ -6,7 +6,7 @@ import CartItems from "../Comps/CartItems";
 
 const Cart = () => {
   //get items
-  const [datas, setDatas] = useState(null);
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
     axios
@@ -14,16 +14,12 @@ const Cart = () => {
         `${process.env.REACT_APP_BASE_LINK}/cart/find/623c3cdf9598da547b619a10`
       )
       .then((response) => {
-        setDatas(response.data);
+        setProducts(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  // if(datas !== null)
-  // datas.map((x) => 
-  //   console.log(x)
-  // );
 
   return (
     <Container>
@@ -34,7 +30,7 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            {datas  && datas.map((x)=><CartItems key={x._id} data={x}/>)}
+            {products  && products.map((x)=><CartItems key={x._id} data={x}/>)}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>

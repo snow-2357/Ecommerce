@@ -5,40 +5,38 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function CartItems({ data }) {
-  const [datas, setDatas] = useState(null);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BASE_LINK}/product/find/${data.productId}`)
       .then((response) => {
-        setDatas(response.data);
+        setProduct(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [data]);
 
   return (
     <>
-      {console.log(data.productId)}
-      {console.log(datas)}
-      {datas && <Product>
-        <ProductDetail>
-           <Image src={datas.img} />
-          <Details>
-          <b>Product:</b>{datas.title} 
-            <ProductColor color="black" />
-            <ProductSize>
-              <b>price:</b> {datas.price}
-            </ProductSize>
-          </Details>
-        </ProductDetail>
-        <PriceDetail>
-          <ProductAmountContainer></ProductAmountContainer>
-          <ProductPrice>$ 30</ProductPrice>
-        </PriceDetail>
-      </Product>}
       <Hr />
+      {product && (
+        <Product>
+          <ProductDetail>
+            <Image src={product.img} />
+            <Details>
+              <b>Product:</b>
+              {product.title}
+              <ProductColor color="black" />
+            </Details>
+          </ProductDetail>
+          <PriceDetail>
+            <ProductAmountContainer></ProductAmountContainer>
+            <ProductPrice>$ {product.price}</ProductPrice>
+          </PriceDetail>
+        </Product>
+      )}
     </>
   );
 }
@@ -70,8 +68,6 @@ const ProductColor = styled.div`
   border-radius: 50%;
   background-color: ${(props) => props.color};
 `;
-
-const ProductSize = styled.span``;
 
 const PriceDetail = styled.div`
   flex: 1;

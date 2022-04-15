@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { mobile } from "../responsive";
 import { useSelector, useDispatch } from "react-redux";
-import { loginStart, loginSuccess, loginFailure } from "../redux/userSlice";
+import { loginStart, loginSuccess, loginFailure, setUserID } from "../redux/userSlice";
 const Login = () => {
   //const logingdata=useSelector((state)=>state.user.currentUser)
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const Login = () => {
       .then((response) => {
         console.log(response.data);
         dispatch(loginSuccess(response.data.username));
+        dispatch(setUserID(response.data._id))
       })
       // .then(json => console.log(json))
       .catch((err) => {

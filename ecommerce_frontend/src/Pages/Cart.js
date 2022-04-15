@@ -3,15 +3,18 @@ import { mobile } from "../responsive";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CartItems from "../Comps/CartItems";
-
+import { useSelector, useDispatch } from "react-redux";
 const Cart = () => {
+  const user = useSelector((state) => state.user.currentUser);
+  const userId = useSelector((state) => state.user.UserId);
+  console.log(user,userId);
   //get items
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_BASE_LINK}/cart/find/623c3cdf9598da547b619a10`
+        `${process.env.REACT_APP_BASE_LINK}/cart/find/${userId}`
       )
       .then((response) => {
         setProducts(response.data);

@@ -18,7 +18,6 @@ import Footer from "./Comps/Footer";
 //import { loginStart, loginSuccess , loginFailure} from './redux/userSlice'
 function App() {
   const user = useSelector((state) => state.user.currentUser);
-  // const dispatch = useDispatch()
   return (
     <Router>
       <Container>

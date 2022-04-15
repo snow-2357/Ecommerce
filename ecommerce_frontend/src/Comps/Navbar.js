@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const Navbar = ({ user }) => {
   return (
       <Container>
-        {console.log(`${user} is loged in`)}
+        {/* {console.log(`${user} is loged in`)} */}
         <Wraper>
           {/* logo */}
             <Logo>

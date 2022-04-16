@@ -17,7 +17,9 @@ const Navbar = ({ user }) => {
             </Logo>
           
           {/* search */}
+          
           <SearchDiv>
+          <Link to ="/allproducts">
             <SearchWraper>
               <Input
                 className="input"
@@ -25,7 +27,11 @@ const Navbar = ({ user }) => {
               />
               <Search style={{ color: "rgb(40, 116, 240)", fontSize: 25 }} />
             </SearchWraper>
+            </Link>
           </SearchDiv>
+          
+          
+          
           {/* user cart */}
           <User>
             <LoginWraper>{user ? user : "Log In"}</LoginWraper>

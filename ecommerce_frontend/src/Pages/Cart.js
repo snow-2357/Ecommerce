@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CartItems from "../Comps/CartItems";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 const Cart = () => {
   const user = useSelector((state) => state.user.currentUser);
   const userId = useSelector((state) => state.user.UserId);
@@ -29,7 +30,7 @@ const Cart = () => {
       <Wrapper>
         <Title>MY BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopButton><Link to="/" style={{ textDecoration: "none" , color:"white" }}>CONTINUE SHOPPING</Link></TopButton>
         </Top>
         <Bottom>
           <Info>

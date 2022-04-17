@@ -74,3 +74,20 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// searching products req.params.data
+
+router.get("/search/:item", async (req, res) => {
+  try {
+    const product = await Product.find({
+      title: { $regex: `.*${req.params.item}*` , $options: 'i'},
+    });
+    if (!product) {
+      res.status(401).json("No item found");
+    } else {
+      res.status(200).json(product);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});

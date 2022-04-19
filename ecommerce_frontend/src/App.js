@@ -24,8 +24,8 @@ function App() {
         <Navbar user={user} />
         <Switch>
           <Route exact path="/">
-          {/* <Home user={user} /> */}
-            {user ? <Home user={user} /> : <Login />}
+          <Home user={user} />
+            {/* {user ? <Home user={user} /> : <Login />} */}
           </Route>
           <Route path="/cart">{user ? <Cart user={user} /> : <Login />}</Route>
           {/* <Route path="/cart"> <Cart /> </Route> */}

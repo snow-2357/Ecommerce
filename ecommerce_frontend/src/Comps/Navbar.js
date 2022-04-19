@@ -19,7 +19,7 @@ const Navbar = ({ user }) => {
           {/* search */}
           
           <SearchDiv>
-          <Link to ="/allproducts">
+          <Link to ="/allproducts" >
             <SearchWraper>
               <Input
                 className="input"
@@ -34,7 +34,10 @@ const Navbar = ({ user }) => {
           
           {/* user cart */}
           <User>
-            <LoginWraper>{user ? user : "Log In"}</LoginWraper>
+            
+            <LoginWraper><Link to ="/login" style={{ textDecoration: "none" , color:"white" }}>
+            {user ? user : "Log In"}
+              </Link></LoginWraper>
             <MoreWraper>
               {" "}
               More{" "}

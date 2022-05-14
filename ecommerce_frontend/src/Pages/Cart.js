@@ -5,6 +5,7 @@ import axios from "axios";
 import CartItems from "../Comps/CartItems";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { Clear } from "@material-ui/icons";
 const Cart = () => {
   const user = useSelector((state) => state.user.currentUser);
   const userId = useSelector((state) => state.user.UserId);
@@ -12,26 +13,26 @@ const Cart = () => {
   //get items
   const [products, setProducts] = useState(null);
   const [productId, setproductId] = useState();
-  const [count, setCount] =useState(0);
-  const handleDelete=(e,productId)=>{
-    e.preventDefault()
+  const [count, setCount] = useState(0);
+  const handleDelete = (e, productId) => {
+    e.preventDefault();
     setproductId(productId);
-    console.log(productId)
-    const data={
+    console.log(productId);
+    const data = {
       productId: productId,
-       quantity: 1
-    }
+      quantity: 1,
+    };
     axios
-      .post(`${process.env.REACT_APP_BASE_LINK}/cart/delete/${userId}`,data)
+      .post(`${process.env.REACT_APP_BASE_LINK}/cart/delete/${userId}`, data)
       .then((response) => {
         console.log(response.data);
-        setCount(count+1);
+        setCount(count + 1);
       })
       // .then(json => console.log(json))
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
   useEffect(() => {
     axios
@@ -42,7 +43,7 @@ const Cart = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [userId,productId,count]);
+  }, [userId, productId, count]);
 
   return (
     <Container>
@@ -61,7 +62,17 @@ const Cart = () => {
               products.map((x) => (
                 <>
                   <CartItems key={x._id} data={x} />
-                  <button onClick={(e)=>handleDelete(e,x.productId)}>Delete</button>
+                  <Clear
+                    onClick={(e) => handleDelete(e, x.productId)}
+                    style={{
+                      position: "absolute",
+                      top: "10px",
+                      right: "10px",
+                      padding: "3px",
+                      border: "1px solid black",
+                      borderRadius: "50%",
+                    }}
+                  />
                 </>
               ))}
           </Info>
@@ -119,6 +130,7 @@ const Bottom = styled.div`
 
 const Info = styled.div`
   flex: 3;
+  position: relative;
 `;
 
 const Summary = styled.div`

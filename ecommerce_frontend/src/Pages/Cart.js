@@ -60,7 +60,7 @@ const Cart = () => {
           <Info>
             {products &&
               products.map((x) => (
-                <>
+                <CartItemWraper>
                   <CartItems key={x._id} data={x} />
                   <Clear
                     onClick={(e) => handleDelete(e, x.productId)}
@@ -73,7 +73,7 @@ const Cart = () => {
                       borderRadius: "50%",
                     }}
                   />
-                </>
+                </CartItemWraper>
               ))}
           </Info>
           <Summary>
@@ -154,6 +154,9 @@ const SummaryItem = styled.div`
 `;
 
 const SummaryItemText = styled.span``;
+const CartItemWraper =styled.div`
+  position:relative;
+`;
 
 const SummaryItemPrice = styled.span``;
 

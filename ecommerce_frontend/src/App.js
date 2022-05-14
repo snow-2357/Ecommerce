@@ -15,13 +15,30 @@ import Signup from "./Pages/Signup";
 import OneProduct from "./Pages/OneProduct";
 import { useSelector, useDispatch } from "react-redux";
 import Footer from "./Comps/Footer";
+import { useEffect,useState } from "react";
+import axios from "axios";
+
 //import { loginStart, loginSuccess , loginFailure} from './redux/userSlice'
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+  const userId = useSelector((state) => state.user.UserId);
+  const [products,setProducts]=useState([])
+  console.log(userId,"aopp");
+  useEffect(()=>{
+    axios
+    .get(`${process.env.REACT_APP_BASE_LINK}/cart/find/${userId}`)
+    .then((response) => {
+      setProducts(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  },[])
+
   return (
     <Router>
       <Container>
-        <Navbar user={user} />
+        <Navbar user={user} cartitems={products.length}/>
         <Switch>
           <Route exact path="/">
           <Home user={user} />

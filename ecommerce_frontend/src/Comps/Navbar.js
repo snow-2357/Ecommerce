@@ -4,7 +4,7 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCart, KeyboardArrowUp } from "@material-ui/icons";
 import { mobile, fullscreen } from "../responsive";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-const Navbar = ({ user }) => {
+const Navbar = ({ user, cartitems }) => {
   return (
       <Container>
         {/* {console.log(`${user} is loged in`)} */}
@@ -49,7 +49,7 @@ const Navbar = ({ user }) => {
             <Link to="/cart" style={{ textDecoration: "none" }}>
               <CartWraper>
                 <p>Cart</p>
-                <Badge className="cart" badgeContent={4} color="primary">
+                <Badge className="cart" badgeContent={cartitems} color="primary">
                   <ShoppingCart style={{ color: "white" }} />
                 </Badge>
               </CartWraper>

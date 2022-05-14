@@ -2,7 +2,7 @@
 
 ## Description
 
-An ecommerce store built with MERN stack, and firebase. This ecommerce store enable three main features:
+An ecommerce store built with MERN stack. This ecommerce store enable three main features:
 
 1. Buyers browse the store categories, products and brands
 2. Sellers or Merchants manage their own brand component

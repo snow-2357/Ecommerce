@@ -8,33 +8,62 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const user = useSelector((state) => state.user.currentUser);
   const userId = useSelector((state) => state.user.UserId);
-  console.log(user,userId);
+  // console.log(user, userId);
   //get items
   const [products, setProducts] = useState(null);
+  const [productId, setproductId] = useState();
+  const [count, setCount] =useState(0);
+  const handleDelete=(e,productId)=>{
+    e.preventDefault()
+    setproductId(productId);
+    console.log(productId)
+    const data={
+      productId: productId,
+       quantity: 1
+    }
+    axios
+      .post(`${process.env.REACT_APP_BASE_LINK}/cart/delete/${userId}`,data)
+      .then((response) => {
+        console.log(response.data);
+        setCount(count+1);
+      })
+      // .then(json => console.log(json))
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   useEffect(() => {
     axios
-      .get(
-        `${process.env.REACT_APP_BASE_LINK}/cart/find/${userId}`
-      )
+      .get(`${process.env.REACT_APP_BASE_LINK}/cart/find/${userId}`)
       .then((response) => {
         setProducts(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [userId,productId,count]);
 
   return (
     <Container>
       <Wrapper>
         <Title>MY BAG</Title>
         <Top>
-          <TopButton><Link to="/" style={{ textDecoration: "none" , color:"white" }}>CONTINUE SHOPPING</Link></TopButton>
+          <TopButton>
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+              CONTINUE SHOPPING
+            </Link>
+          </TopButton>
         </Top>
         <Bottom>
           <Info>
-            {products  && products.map((x)=><CartItems key={x._id} data={x}/>)}
+            {products &&
+              products.map((x) => (
+                <>
+                  <CartItems key={x._id} data={x} />
+                  <button onClick={(e)=>handleDelete(e,x.productId)}>Delete</button>
+                </>
+              ))}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>

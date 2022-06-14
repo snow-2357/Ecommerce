@@ -2,6 +2,22 @@ const router = require("express").Router();
 
 const Product = require("../models/Product");
 
+const multer =require("multer")
+
+const path =require("path")
+
+const storage = multer.diskStorage({
+  destination: "./Image",
+  filename:(req, file,cb)=>{
+    console.log(file)
+    return cb(null,Date.now()+ path.extname(file.originalname))
+  }
+
+})
+
+const upload= multer({storage:storage})
+
+// import {verifyAdmin} from "./verifyToken"
 //create
 
 router.post("/addproduct", async (req, res) => {
@@ -90,4 +106,9 @@ router.get("/search/:item", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+//for reciving image
+router.post("/addimg",upload.single("profile"), async (req, res) => {
+  res.json({status:"image uploaded"})
 });

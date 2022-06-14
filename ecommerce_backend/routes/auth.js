@@ -48,18 +48,18 @@ router.post("/login", async(req,res)=>{
         res.status(500).json(err);
     }
 })
-router.post("/id", async(req, res) => {
-    try{
-      const user = await User.findOne({username:"sima"});
-      if(!user){
-        res.status(401).json("no user found")
-      }else{
-        res.status(200).json(user);
-      }
+// router.post("/id", async(req, res) => {
+//     try{
+//       const user = await User.findOne({username:"sima"});
+//       if(!user){
+//         res.status(401).json("no user found")
+//       }else{
+//         res.status(200).json(user);
+//       }
       
-    }catch(e){
-      res.status(500);
-    }
-  });
+//     }catch(e){
+//       res.status(500);
+//     }
+//   });
 
 module.exports =router;
